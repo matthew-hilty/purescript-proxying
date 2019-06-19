@@ -1,0 +1,29 @@
+{
+  "name": "purescript-proxying",
+  "homepage": "https://github.com/matthew-hilty/purescript-proxying",
+  "authors": [
+    "Matthew Hilty <hilty.matthew+purescript@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/matthew-hilty/purescript-proxying.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-console": "^4.2.0",
+    "purescript-effect": "^2.0.1",
+    "purescript-generics-rep": "^6.1.0",
+    "purescript-prelude": "^4.1.0",
+    "purescript-typelevel-eval": "^0.2.0",
+    "purescript-typelevel-prelude": "^4.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^4.0.0"
+  }
+}
