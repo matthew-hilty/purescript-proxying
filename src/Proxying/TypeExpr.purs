@@ -16,17 +16,17 @@ import Type.Eval (class Eval, TEProxy(TEProxy), kind TypeExpr)
 import Type.Proxy (Proxy(Proxy))
 
 class
-  Generic (f s) rep
+  Generic (f e) rep
   <= GenericTEProxying
       (rep :: Type)
       (f :: TypeExpr -> Type)
-      (s :: TypeExpr)
+      (e :: TypeExpr)
   where
-  genericTEProxy :: Proxy rep ->  f s
+  genericTEProxy :: Proxy rep ->  f e
 
 instance genericTEProxyingConstructor
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => GenericTEProxying (Constructor proxyName NoArguments) f s
+  :: Generic (f e) (Constructor proxyName NoArguments)
+  => GenericTEProxying (Constructor proxyName NoArguments) f e
   where
   genericTEProxy _ = to (Constructor NoArguments)
 
@@ -37,8 +37,8 @@ instance teProxyingTEProxy :: TEProxying TEProxy e where
   teProxy = TEProxy
 
 else instance teProxyingGeneric
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => TEProxying f s
+  :: Generic (f e) (Constructor proxyName NoArguments)
+  => TEProxying f e
   where
   teProxy = genericTEProxy (Proxy :: Proxy (Constructor proxyName NoArguments))
 

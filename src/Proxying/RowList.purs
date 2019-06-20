@@ -17,19 +17,19 @@ import Type.Proxy (Proxy(Proxy))
 import Type.Row (RLProxy(RLProxy)) as TypeRow
 
 class
-  Generic (f s) rep
-  <= GenericRLProxying (rep :: Type) (f :: RowList -> Type) (s :: RowList)
+  Generic (f l) rep
+  <= GenericRLProxying (rep :: Type) (f :: RowList -> Type) (l :: RowList)
   where
-  genericRLProxy :: Proxy rep ->  f s
+  genericRLProxy :: Proxy rep ->  f l
 
 instance genericRLProxyingConstructor
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => GenericRLProxying (Constructor proxyName NoArguments) f s
+  :: Generic (f l) (Constructor proxyName NoArguments)
+  => GenericRLProxying (Constructor proxyName NoArguments) f l
   where
   genericRLProxy _ = to (Constructor NoArguments)
 
-class RLProxying (f :: RowList -> Type) (s :: RowList) where
-  rlProxy :: f s
+class RLProxying (f :: RowList -> Type) (l :: RowList) where
+  rlProxy :: f l
 
 instance rlProxying_TypeDataRowList_RLProxy
   :: RLProxying TypeDataRowList.RLProxy l
@@ -42,7 +42,7 @@ else instance rlProxying_TypeRow_RLProxy
   rlProxy = TypeRow.RLProxy
 
 else instance rlProxyingGeneric
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => RLProxying f s
+  :: Generic (f l) (Constructor proxyName NoArguments)
+  => RLProxying f l
   where
   rlProxy = genericRLProxy (Proxy :: Proxy (Constructor proxyName NoArguments))

@@ -14,14 +14,14 @@ import Data.Generic.Rep
 import Type.Proxy (Proxy(Proxy))
 
 class
-  Generic (f s) rep
-  <= GenericTProxying (rep :: Type) (f :: Type -> Type) (s :: Type)
+  Generic (f t) rep
+  <= GenericTProxying (rep :: Type) (f :: Type -> Type) (t :: Type)
   where
-  genericTProxy :: Proxy rep ->  f s
+  genericTProxy :: Proxy rep ->  f t
 
 instance genericTProxyingConstructor
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => GenericTProxying (Constructor proxyName NoArguments) f s
+  :: Generic (f t) (Constructor proxyName NoArguments)
+  => GenericTProxying (Constructor proxyName NoArguments) f t
   where
   genericTProxy _ = to (Constructor NoArguments)
 
@@ -32,7 +32,7 @@ instance tProxyingProxy :: TProxying Proxy a where
   tProxy = Proxy
 
 else instance tProxyingGeneric
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => TProxying f s
+  :: Generic (f t) (Constructor proxyName NoArguments)
+  => TProxying f t
   where
   tProxy = genericTProxy (Proxy :: Proxy (Constructor proxyName NoArguments))

@@ -26,26 +26,26 @@ import Type.Data.Ordering (reflectOrdering) as Standard
 import Type.Proxy (Proxy(Proxy))
 
 class
-  Generic (f s) rep
-  <= GenericOProxying (rep :: Type) (f :: Ordering -> Type) (s :: Ordering)
+  Generic (f o) rep
+  <= GenericOProxying (rep :: Type) (f :: Ordering -> Type) (o :: Ordering)
   where
-  genericOProxy :: Proxy rep ->  f s
+  genericOProxy :: Proxy rep ->  f o
 
 instance genericOProxyingConstructor
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => GenericOProxying (Constructor proxyName NoArguments) f s
+  :: Generic (f o) (Constructor proxyName NoArguments)
+  => GenericOProxying (Constructor proxyName NoArguments) f o
   where
   genericOProxy _ = to (Constructor NoArguments)
 
-class OProxying (f :: Ordering -> Type) (s :: Ordering) where
-  oProxy :: f s
+class OProxying (f :: Ordering -> Type) (o :: Ordering) where
+  oProxy :: f o
 
-instance oProxyingOProxy :: OProxying OProxy s where
+instance oProxyingOProxy :: OProxying OProxy o where
   oProxy = OProxy
 
 else instance oProxyingGeneric
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => OProxying f s
+  :: Generic (f o) (Constructor proxyName NoArguments)
+  => OProxying f o
   where
   oProxy = genericOProxy (Proxy :: Proxy (Constructor proxyName NoArguments))
 

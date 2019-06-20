@@ -16,14 +16,14 @@ import Type.Row (RProxy(RProxy)) as TypeRow
 import Type.Proxy (Proxy(Proxy))
 
 class
-  Generic (f s) rep
-  <= GenericRProxying (rep :: Type) (f :: # Type -> Type) (s :: # Type)
+  Generic (f r) rep
+  <= GenericRProxying (rep :: Type) (f :: # Type -> Type) (r :: # Type)
   where
-  genericRProxy :: Proxy rep ->  f s
+  genericRProxy :: Proxy rep ->  f r
 
 instance genericRProxyingConstructor
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => GenericRProxying (Constructor proxyName NoArguments) f s
+  :: Generic (f r) (Constructor proxyName NoArguments)
+  => GenericRProxying (Constructor proxyName NoArguments) f r
   where
   genericRProxy _ = to (Constructor NoArguments)
 
@@ -37,7 +37,7 @@ else instance rProxying_TypeRow_RProxy :: RProxying TypeRow.RProxy r where
   rProxy = TypeRow.RProxy
 
 else instance rProxyingGeneric
-  :: Generic (f s) (Constructor proxyName NoArguments)
-  => RProxying f s
+  :: Generic (f r) (Constructor proxyName NoArguments)
+  => RProxying f r
   where
   rProxy = genericRProxy (Proxy :: Proxy (Constructor proxyName NoArguments))
