@@ -116,15 +116,6 @@ let upstream =
 
 let overrides = {=}
 
-let additions =
-  { typelevel-eval =
-      mkPackage
-        [ "prelude"
-        , "tuples"
-        , "typelevel-prelude"
-        ]
-        "https://github.com/natefaubion/purescript-typelevel-eval.git"
-        "v0.2.0"
-  }
+let additions = {=}
 
 in  upstream // overrides // additions

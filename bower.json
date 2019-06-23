@@ -20,10 +20,16 @@
     "purescript-effect": "^2.0.1",
     "purescript-generics-rep": "^6.1.0",
     "purescript-prelude": "^4.1.0",
-    "purescript-typelevel-eval": "^0.2.0",
     "purescript-typelevel-prelude": "^4.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^4.0.0"
+    "purescript-psci-support": "^4.0.0",
+    "purescript-quickcheck": "^6.1.0",
+    "purescript-test-unit": "^14.0.0"
+  },
+  "resolutions": {
+    "purescript-typelevel-prelude": "^4.0.0",
+    "purescript-quickcheck": "^6.1.0",
+    "purescript-record": "^2.0.0"
   }
 }

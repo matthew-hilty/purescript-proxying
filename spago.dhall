@@ -10,7 +10,6 @@ You can edit this file as you like.
     , "generics-rep"
     , "prelude"
     , "test-unit"
-    , "typelevel-eval"
     , "typelevel-prelude"
     ]
 , packages =

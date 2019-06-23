@@ -7,7 +7,6 @@ module Type.Proxying
   , module Type.Proxying.Type
   , module Type.Proxying.Type2
   , module Type.Proxying.Type3
-  , module Type.Proxying.TypeExpr
   ) where
 
 import Type.Proxying.Boolean (class BProxying, bProxy, reflectBoolean, reifyBoolean)
@@ -18,4 +17,3 @@ import Type.Proxying.Symbol (class SProxying, reflectSymbol, reifySymbol, sProxy
 import Type.Proxying.Type (class TProxying, tProxy)
 import Type.Proxying.Type2 (class T2Proxying, t2Proxy)
 import Type.Proxying.Type3 (class T3Proxying, t3Proxy)
-import Type.Proxying.TypeExpr (class TEProxying, proxyEval, teProxy)
