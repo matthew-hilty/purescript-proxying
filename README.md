@@ -1,4 +1,4 @@
-# purescript-proyxing
+# purescript-proxying
 
 Typeclass interfaces for generalizing proxying encapsulations of kind `Type`
 

@@ -7,7 +7,6 @@
   "repository": "https://github.com/matthew-hilty/purescript-proxying",
   "author": "matthew.hilty <hilty.matthew+purescript@gmail.com>",
   "license": "MIT",
-  "private": false,
   "devDependencies": {
     "bower": "^1.8.8",
     "pulp": "^13.0.0"
