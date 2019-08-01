@@ -17,19 +17,14 @@
   ],
   "dependencies": {
     "purescript-console": "^4.2.0",
-    "purescript-effect": "^2.0.1",
+    "purescript-effect": "^2.0.0",
     "purescript-generics-rep": "^6.1.0",
     "purescript-prelude": "^4.1.0",
-    "purescript-typelevel-prelude": "^4.0.0"
+    "purescript-typelevel-prelude": "^5.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0",
     "purescript-quickcheck": "^6.1.0",
-    "purescript-test-unit": "^14.0.0"
-  },
-  "resolutions": {
-    "purescript-typelevel-prelude": "^4.0.0",
-    "purescript-quickcheck": "^6.1.0",
-    "purescript-record": "^2.0.0"
+    "purescript-test-unit": "^15.0.0"
   }
 }
