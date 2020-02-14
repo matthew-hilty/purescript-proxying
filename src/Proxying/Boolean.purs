@@ -18,7 +18,6 @@ import Type.Data.Boolean
   , BProxy(BProxy)
   , False
   , True
-  , kind Boolean
   )
 import Type.Data.Boolean (reflectBoolean) as Standard
 import Type.Proxy (Proxy(Proxy))

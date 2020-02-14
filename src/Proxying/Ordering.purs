@@ -14,20 +14,20 @@ import Data.Generic.Rep
   , to
   )
 import Data.Ordering (Ordering(EQ, GT, LT))
+import Prim.Ordering as PO
 import Type.Data.Ordering
   ( class IsOrdering
   , EQ
   , GT
   , LT
   , OProxy(OProxy)
-  , kind Ordering
   )
 import Type.Data.Ordering (reflectOrdering) as Standard
 import Type.Proxy (Proxy(Proxy))
 
 class
   Generic (f o) rep
-  <= GenericOProxying (rep :: Type) (f :: Ordering -> Type) (o :: Ordering)
+  <= GenericOProxying (rep :: Type) (f :: PO.Ordering -> Type) (o :: PO.Ordering)
   where
   genericOProxy :: Proxy rep ->  f o
 
@@ -37,7 +37,7 @@ instance genericOProxyingConstructor
   where
   genericOProxy _ = to (Constructor NoArguments)
 
-class OProxying (f :: Ordering -> Type) (o :: Ordering) where
+class OProxying (f :: PO.Ordering -> Type) (o :: PO.Ordering) where
   oProxy :: f o
 
 instance oProxyingOProxy :: OProxying OProxy o where
