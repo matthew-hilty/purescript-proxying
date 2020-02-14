@@ -11,13 +11,13 @@ import Data.Generic.Rep
   , NoArguments(NoArguments)
   , to
   )
-import Prim.RowList (kind RowList)
+import Prim.RowList (RowList)
 import Type.Data.RowList (RLProxy(RLProxy))
 import Type.Proxy (Proxy(Proxy))
 
 class
   Generic (f l) rep
-  <= GenericRLProxying (rep :: Type) (f :: RowList -> Type) (l :: RowList)
+  <= GenericRLProxying (rep :: Type) (f :: RowList Type -> Type) (l :: RowList Type)
   where
   genericRLProxy :: Proxy rep ->  f l
 
@@ -27,7 +27,7 @@ instance genericRLProxyingConstructor
   where
   genericRLProxy _ = to (Constructor NoArguments)
 
-class RLProxying (f :: RowList -> Type) (l :: RowList) where
+class RLProxying (f :: RowList Type -> Type) (l :: RowList Type) where
   rlProxy :: f l
 
 instance rlProxying_TypeDataRowList_RLProxy :: RLProxying RLProxy l where

@@ -17,7 +17,7 @@ import Type.Proxy (Proxy(Proxy))
 
 class
   Generic (f r) rep
-  <= GenericRProxying (rep :: Type) (f :: # Type -> Type) (r :: # Type)
+  <= GenericRProxying (rep :: Type) (f :: Row Type -> Type) (r :: Row Type)
   where
   genericRProxy :: Proxy rep ->  f r
 
@@ -27,7 +27,7 @@ instance genericRProxyingConstructor
   where
   genericRProxy _ = to (Constructor NoArguments)
 
-class RProxying (f :: # Type -> Type) (r :: # Type) where
+class RProxying (f :: Row Type -> Type) (r :: Row Type) where
   rProxy :: f r
 
 instance rProxying_TypeDataRow_RProxy :: RProxying TypeDataRow.RProxy r where
